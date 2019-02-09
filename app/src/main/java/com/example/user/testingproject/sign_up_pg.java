@@ -1,6 +1,7 @@
 package com.example.user.testingproject;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,7 +20,7 @@ public class sign_up_pg extends AppCompatActivity {
 
     EditText signup_email,signup_pass;
     Button signup_btn;
-
+    String email ,pass;
     FirebaseAuth mauth;
 
     @Override
@@ -38,7 +39,7 @@ public class sign_up_pg extends AppCompatActivity {
         public void onClick(View view) {
 
 
-            String email ,pass;
+
 
             email =signup_email.getText().toString();
             pass = signup_pass.getText().toString();
@@ -51,7 +52,9 @@ public class sign_up_pg extends AppCompatActivity {
 
                         if(task.isSuccessful()){
 
-                            Intent i = new Intent(getApplicationContext(),homepage.class);
+                            Intent i = new Intent(getApplicationContext(),registrationFrom.class);
+
+                            i.putExtra("sentmail", email );
                             startActivity(i);
                             finish();
                         }
